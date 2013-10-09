@@ -16,6 +16,11 @@
 .geoposition-search {
     float: right;
     text-align: right;
+    margin-top: 1px; /* for Safari */
+}
+
+.geoposition-search input {
+    width: 200px;
 }
 
 .geoposition-results {
