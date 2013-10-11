@@ -1,26 +1,31 @@
-.geoposition-map {
-    height: 480px;
-    position: relative;
-    margin: 6px 0;
-}
 
+.geoposition-top {
+    /* contains the search input and the address sum-up */
+    width: 100%;
+    height: 25px;
+}
 .geoposition-address, .geoposition-search {
     width: 50%;
 }
 
-.geoposition-address {
+.geoposition-search {
     float: left;
     text-align: left;
 }
 
-.geoposition-search {
+.geoposition-address {
     float: right;
     text-align: right;
-    margin-top: 1px; /* for Safari */
 }
 
 .geoposition-search input {
-    width: 200px;
+    width: 300px;
+}
+
+.geoposition-map {
+    height: 480px;
+    position: relative;
+    margin: 1px 0 4px 0;
 }
 
 .geoposition-results {

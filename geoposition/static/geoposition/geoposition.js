@@ -9,13 +9,14 @@ if (jQuery != undefined) {
         var mapDefaults = {
             'mapTypeId': google.maps.MapTypeId.ROADMAP
         };
-        
+
         $('p.geoposition-widget').each(function() {
             var $container = $(this),
+                $topContainer = $('<div class="geoposition-top" />'),
                 $mapContainer = $('<div class="geoposition-map" />'),
                 $addressRow = $('<div class="geoposition-address" />'),
                 $searchRow = $('<div class="geoposition-search" />'),
-                $searchInput = $('<input>', {'type': 'search', 'placeholder': 'Search …'}),
+                $searchInput = $('<input>', {'type': 'search', 'placeholder': 'Search...'}),
                 $latitudeField = $container.find('input.geoposition:eq(0)'),
                 $longitudeField = $container.find('input.geoposition:eq(1)'),
                 latitude = parseFloat($latitudeField.val()) || 0,
@@ -23,9 +24,9 @@ if (jQuery != undefined) {
                 map,
                 mapLatLng,
                 mapOptions,
-                marker;
-            
-            
+                marker
+                ;
+
             $searchInput.bind('keydown', function(e) {
                 if (e.keyCode == 13) {
                     e.preventDefault();
@@ -46,7 +47,7 @@ if (jQuery != undefined) {
                                 marker.setPosition(result.geometry.location);
                                 google.maps.event.trigger(marker, 'dragend');
                             };
-                            
+
                             if (results.length == 1) {
                                 updatePosition(results[0]);
                             } else {
@@ -69,7 +70,9 @@ if (jQuery != undefined) {
                 $(this).parent().find('ul.geoposition-results').remove();
             });
             $searchInput.appendTo($searchRow);
-            $container.append($mapContainer, $addressRow, $searchRow);
+
+            $topContainer.append($searchRow, $addressRow);
+            $container.prepend($topContainer, '<br />', $mapContainer);
             
             mapLatLng = new google.maps.LatLng(latitude, longitude);
             mapOptions = $.extend({}, mapDefaults, {

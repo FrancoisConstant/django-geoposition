@@ -2,6 +2,7 @@ from django import forms
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 
+
 class GeopositionWidget(forms.MultiWidget):
     def __init__(self, attrs=None):
         widgets = (
